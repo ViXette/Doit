@@ -58,6 +58,18 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(tasks[indexPath.row])
+            tasks.remove(at: indexPath.row)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            tableView.reloadData()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectTaskSegue" {
             let nextVC = segue.destination as! CompleteTaskViewController
