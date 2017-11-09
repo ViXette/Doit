@@ -1,9 +1,5 @@
 //
-//  CompleteTaskViewController.swift
-//  Doit
-//
 //  Created by VX on 26/08/16.
-//  Copyright © 2016 VXette. All rights reserved.
 //
 
 import UIKit
